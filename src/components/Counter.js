@@ -10,7 +10,7 @@ class Counter extends React.Component {
         <Odometer
           format="d"
           duration={1000}
-          value={1000000 + this.props.counter}
+          value={Math.max(1000000, Math.pow(10, this.props.counter.toString().length + 1)) + this.props.counter}
         />
       </div>
     )
