@@ -1,12 +1,10 @@
 import openSocket from 'socket.io-client'
 
-const socket = openSocket('https://team.skedify.io/counter/', {path: '/counter/socket.io', origins: '*:*'})
-socket.on('connect', function(){
-  socket.emit('authenticate', {token: 'TEST-TOKEN'});
-});
+const socket = openSocket('https://team.skedify.io/', {path: '/counter/socket.io', origins: '*:*'})
+
 function subscribeToAppointmentService (cb) {
   socket.on('appointmentCount', msg => cb(null, msg))
-  socket.emit('subscribeToAppointmentService', 1000)
+  socket.emit('subscribeToAppointmentService');
 }
 
 export { subscribeToAppointmentService }
